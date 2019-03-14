@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import scrapy
+from tencent.items import TencentItem
 
 
 class TencentpositionSpider(scrapy.Spider):
