@@ -25,8 +25,8 @@ class TencentpositionSpider(scrapy.Spider):
             item['publishTime'] = each.xpath("./td[5]/text()").extract()[0]
         
             yield item
-       if self.offset <= 3087:
-           self.offset += 10 
+        if self.offset <= 3087:
+            self.offset += 10 
        
-       yield scrapy.Request(self.url + str(self.offset),callback=self.parse) 
+        yield scrapy.Request(self.url + str(self.offset),callback=self.parse) 
         pass
