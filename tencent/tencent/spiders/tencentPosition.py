@@ -19,7 +19,7 @@ class TencentpositionSpider(scrapy.Spider):
             # 详情连接
             item['positionlink'] = each.xpath("./td[1]/a/@href").extract()[0]
             # 职位类别
-            item['positionType'] = each.xpath("./td[2]/text()").extract()[0]
+            item['positionType'] = each.xpath("./td[2]/text()").extract_first()
             # 招聘人数
             item['peopleNum'] =  each.xpath("./td[3]/text()").extract()[0]
             # 工作地点
