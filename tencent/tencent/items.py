@@ -6,7 +6,7 @@
 # https://doc.scrapy.org/en/latest/topics/items.html
 
 import scrapy
-
+from tencent.items import TencentItem
 
 class TencentItem(scrapy.Item):
     # define the fields for your item here like:
