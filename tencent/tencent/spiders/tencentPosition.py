@@ -3,9 +3,11 @@ import scrapy
 
 
 class TencentpositionSpider(scrapy.Spider):
-    name = 'tencentPosition'
+    name = 'tencent'
     allowed_domains = ['tencent.com']
-    start_urls = ['http://tencent.com/']
+    url = 'https://hr.tencent.com/position.php?&start='
+    offset = 0
+    start_urls = [url+str(offset)]
 
     def parse(self, response):
         for each in response.xpath("//tr[@class='even'] | //tr[@class='odd']"):
@@ -25,8 +27,8 @@ class TencentpositionSpider(scrapy.Spider):
             item['publishTime'] = each.xpath("./td[5]/text()").extract()[0]
         
             yield item
-       if self.offset <= 3087:
-           self.offset += 10 
+        if self.offset <= 3087:
+            self.offset += 10 
        
-       yield scrapy.Request(self.url + str(self.offset),callback=self.parse) 
+        yield scrapy.Request(self.url + str(self.offset),callback=self.parse) 
         pass
